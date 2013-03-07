@@ -1,0 +1,6 @@
+*.suo
+*.userprefs
+/Time/obj
+/Time/bin
+/Console/obj
+/Console/bin
