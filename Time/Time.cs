@@ -11,13 +11,13 @@ namespace Faisalman.Utils
 {
   public static class Time
   {
-    const int oneSecond = 1;
-    const int oneMinute = 60 * oneSecond;
-    const int oneHour = 60 * oneMinute;
-    const int oneDay = 24 * oneHour;
-    const int oneWeek = 7 * oneDay;
-    const int oneMonth = 30 * oneDay;
-    const int oneYear = 12 * oneMonth;
+    const int ONE_SECOND = 1;
+    const int ONE_MINUTE = 60 * ONE_SECOND;
+    const int ONE_HOUR = 60 * ONE_MINUTE;
+    const int ONE_DAY = 24 * ONE_HOUR;
+    const int ONE_WEEK = 7 * ONE_DAY;
+    const int ONE_MONTH = 30 * ONE_DAY;
+    const int ONE_YEAR = 12 * ONE_MONTH;
 				
     public static string GetRelative(this DateTime currentTime, DateTime measuredTime)
     {
@@ -30,39 +30,39 @@ namespace Faisalman.Utils
       {
         return "just now";
       }
-      else if (secondsDiff < oneMinute)
+      else if (secondsDiff < ONE_MINUTE)
       {
         value = (int) secondsDiff;
         unit = value > 1 ? "seconds" : "second";
       }
-      else if (secondsDiff < oneHour)
+      else if (secondsDiff < ONE_HOUR)
       {
-        value = (int) secondsDiff / oneMinute;
+        value = (int) secondsDiff / ONE_MINUTE;
         unit = value > 1 ? "minutes" : "minute";
       }
-      else if (secondsDiff < oneDay)
+      else if (secondsDiff < ONE_DAY)
       {
-        value = (int) secondsDiff / oneHour;
+        value = (int) secondsDiff / ONE_HOUR;
         unit = value > 1 ? "hours" : "hour";
       }
-      else if (secondsDiff < oneWeek)
+      else if (secondsDiff < ONE_WEEK)
       {
-        value = (int) secondsDiff / oneDay;
+        value = (int) secondsDiff / ONE_DAY;
         unit = value > 1 ? "days" : "day";
       }
-      else if (secondsDiff < oneMonth)
+      else if (secondsDiff < ONE_MONTH)
       {
-        value = (int) secondsDiff / oneWeek;
+        value = (int) secondsDiff / ONE_WEEK;
         unit = value > 1 ? "weeks" : "week";
       }
-      else if (secondsDiff < oneYear)
+      else if (secondsDiff < ONE_YEAR)
       {
-        value = (int) secondsDiff / oneMonth;
+        value = (int) secondsDiff / ONE_MONTH;
         unit = value > 1 ? "months" : "month";
       }
       else
       {
-        value = (int) secondsDiff / oneYear;
+        value = (int) secondsDiff / ONE_YEAR;
         unit = value > 1 ? "years" : "year";
       }
 			

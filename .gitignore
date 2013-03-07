@@ -1,4 +1,5 @@
 *.suo
+*.pidb
 *.userprefs
 /Time/obj
 /Time/bin
