@@ -30,13 +30,13 @@ namespace Faisalman.Utils
 
   public static class Time
   {
-    const int ONE_SECOND = 1;
-    const int ONE_MINUTE = 60 * ONE_SECOND;
-    const int ONE_HOUR = 60 * ONE_MINUTE;
-    const int ONE_DAY = 24 * ONE_HOUR;
-    const int ONE_WEEK = 7 * ONE_DAY;
-    const int ONE_MONTH = 30 * ONE_DAY;
-    const int ONE_YEAR = 12 * ONE_MONTH;
+    const long SECOND_TICKS = TimeSpan.TicksPerSecond;
+    const long MINUTE_TICKS = TimeSpan.TicksPerMinute;
+    const long HOUR_TICKS = TimeSpan.TicksPerHour;
+    const long DAY_TICKS = TimeSpan.TicksPerDay;
+    const long WEEK_TICKS = TimeSpan.TicksPerDay * 7;
+    const long MONTH_TICKS = TimeSpan.TicksPerDay * 30;
+    const long YEAR_TICKS = TimeSpan.TicksPerDay * 365;
 
     public static Age GetAge(this DateTime bday, DateTime cday)
     {
@@ -83,51 +83,51 @@ namespace Faisalman.Utils
       }
       return age;
     }
-				
-    public static string GetRelative(this DateTime currentTime, DateTime measuredTime)
+    				
+    public static string GetRelativeTime(this DateTime currentTime, DateTime measuredTime)
     {
       bool isAgo = (currentTime.Ticks - measuredTime.Ticks) > 0;
-      long secondsDiff = Math.Abs((currentTime.Ticks - measuredTime.Ticks) / 10000000);
+      long secondsDiff = Math.Abs((currentTime.Ticks - measuredTime.Ticks) / SECOND_TICKS);
       string unit = "";
-      int value = 0;
+      long value = 0;
 
       if (secondsDiff == 0)
       {
         return "just now";
       }
-      else if (secondsDiff < ONE_MINUTE)
+      else if (secondsDiff < MINUTE_TICKS)
       {
-        value = (int) secondsDiff;
+        value = secondsDiff;
         unit = value > 1 ? "seconds" : "second";
       }
-      else if (secondsDiff < ONE_HOUR)
+      else if (secondsDiff < HOUR_TICKS)
       {
-        value = (int) secondsDiff / ONE_MINUTE;
+        value = secondsDiff / MINUTE_TICKS;
         unit = value > 1 ? "minutes" : "minute";
       }
-      else if (secondsDiff < ONE_DAY)
+      else if (secondsDiff < DAY_TICKS)
       {
-        value = (int) secondsDiff / ONE_HOUR;
+        value = secondsDiff / HOUR_TICKS;
         unit = value > 1 ? "hours" : "hour";
       }
-      else if (secondsDiff < ONE_WEEK)
+      else if (secondsDiff < WEEK_TICKS)
       {
-        value = (int) secondsDiff / ONE_DAY;
+        value = secondsDiff / DAY_TICKS;
         unit = value > 1 ? "days" : "day";
       }
-      else if (secondsDiff < ONE_MONTH)
+      else if (secondsDiff < MONTH_TICKS)
       {
-        value = (int) secondsDiff / ONE_WEEK;
+        value = secondsDiff / WEEK_TICKS;
         unit = value > 1 ? "weeks" : "week";
       }
-      else if (secondsDiff < ONE_YEAR)
+      else if (secondsDiff < YEAR_TICKS)
       {
-        value = (int) secondsDiff / ONE_MONTH;
+        value = secondsDiff / MONTH_TICKS;
         unit = value > 1 ? "months" : "month";
       }
       else
       {
-        value = (int) secondsDiff / ONE_YEAR;
+        value = secondsDiff / YEAR_TICKS;
         unit = value > 1 ? "years" : "year";
       }
 			
