@@ -18,11 +18,13 @@ class Program
     DateTime d4 = new DateTime(2014, 4, 30);
 
     // As DateTime extension method
-    Console.WriteLine(d2.GetRelative(d1)); // output: "about 30 seconds ago"
+    Console.WriteLine(d2.GetRelativeTime(d1)); // output: "about 30 seconds ago"
+    Console.WriteLine(d1.GetRelativeTime(d2)); // output: "in about 30 seconds"
     // As usual static method
-    Console.WriteLine(Time.GetRelative(d2, d1)); // output: "about 30 seconds ago"
+    Console.WriteLine(Time.GetRelativeTime(d2, d1)); // output: "about 30 seconds ago"
+    Console.WriteLine(Time.GetRelativeTime(d1, d2)); // output: "in about 30 seconds"
 
-    Console.WriteLine(Time.GetAge(d3, d4)); // output: "43 years 8 months 9 days"
+    Console.WriteLine(Time.GetAge(d3, d4)); // output: "43 years 8 months 9 days";
 
     Console.ReadLine();
   }
